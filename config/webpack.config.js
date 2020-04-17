@@ -1,5 +1,5 @@
 'use strict';
-
+ const LoadablePlugin= require('@loadable/webpack-plugin');
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
@@ -300,6 +300,7 @@ module.exports = function(webpackEnv) {
         ...(modules.webpackAliases || {}),
       },
       plugins: [
+        
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.
         PnpWebpackPlugin,
@@ -371,6 +372,7 @@ module.exports = function(webpackEnv) {
                 ),
                 
                 plugins: [
+                  
                   [
                     require.resolve('babel-plugin-named-asset-import'),
                     {
@@ -508,6 +510,7 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
+      new LoadablePlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
